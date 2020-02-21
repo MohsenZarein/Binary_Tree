@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 #include "binarytree.h"
 
 void PrintList()
@@ -15,7 +14,7 @@ void PrintList()
 
 int main()
 {
-    BinaryTree<int>* BT = new BinaryTree<int>();
+    BinaryTree<std::string>* BT = new BinaryTree<std::string>();
 
     PrintList();
 
@@ -44,11 +43,13 @@ int main()
             BT->Delete();
             break;
          case 7:
+            delete BT;
             return 0;
         default:
             std::cerr<<"invalid input"<<std::endl;
             break;
         }
     }
+    delete BT;
     return 0;
 }
