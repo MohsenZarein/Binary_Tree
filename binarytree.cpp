@@ -10,7 +10,7 @@ BinaryTree<T>::BinaryTree()
 template<typename T>
 void BinaryTree<T>::insert()
 {
-    std::cout<<"Enter your data in order to insert : ";
+    std::cout<<"Enter your data in order to 'insert' : ";
     T tmpData;
     std::cin>>tmpData;
     if(root != nullptr)
@@ -29,6 +29,12 @@ void BinaryTree<T>::Search()
     T tmpData;
     std::cin>>tmpData;
     Search(tmpData,root);
+}
+
+template<typename T>
+void BinaryTree<T>::display_preorder()
+{
+    display_preorder(root);
 }
 
 template<typename T>
@@ -66,6 +72,16 @@ Node<T> *BinaryTree<T>::Search(T data, Node<T>* aNode)
             return Search(data,aNode->left);
     }
     else return nullptr;
+}
+
+template<typename T>
+void BinaryTree<T>::display_preorder(Node<T>* aNode)
+{
+    if(aNode != nullptr) {
+        std::cout<<aNode->data<<std::endl;
+        display_preorder(aNode->left);
+        display_preorder(aNode->right);
+    }
 }
 
 template class BinaryTree<int>;

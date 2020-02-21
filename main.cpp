@@ -1,17 +1,39 @@
 #include <iostream>
 #include "binarytree.h"
 
+void PrintList()
+{
+    std::cout<<"1>>>Insert data"<<std::endl;
+    std::cout<<"2>>>Search data"<<std::endl;
+    std::cout<<"3>>>display preorder"<<std::endl;
+    std::cout<<"4>>>display inorder"<<std::endl;
+    std::cout<<"5>>>display postorder"<<std::endl<<std::endl<<std::endl;
+}
+
 int main()
 {
     BinaryTree<int>* BT = new BinaryTree<int>();
+
+    PrintList();
+
     while(true) {
-        short unsigned int choice = 0;
-        std::cout<<"1>>>Insert data"<<std::endl;
+        short int choice = 0;
+        std::cout<<"choice:";
         std::cin>>choice;
-        if(choice==1)
+
+        switch (choice) {
+        case 1:
             BT->insert();
-        else
             break;
+        case 2:
+            BT->Search();
+            break;
+         case 3:
+            BT->display_preorder();
+        default:
+            std::cerr<<"invalid input"<<std::endl;
+            break;
+        }
     }
     return 0;
 }
