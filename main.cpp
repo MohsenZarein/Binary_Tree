@@ -35,6 +35,9 @@ int main()
          case 4:
             BT->display_inorder();
             break;
+         case 5:
+            BT->display_postorder();
+            break;
         default:
             std::cerr<<"invalid input"<<std::endl;
             break;

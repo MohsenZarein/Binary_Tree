@@ -44,6 +44,12 @@ void BinaryTree<T>::display_inorder()
 }
 
 template<typename T>
+void BinaryTree<T>::display_postorder()
+{
+    display_postorder(root);
+}
+
+template<typename T>
 void BinaryTree<T>::insert(T data, Node<T>* aNode)
 {
     if(data < aNode->data) {
@@ -98,6 +104,17 @@ void BinaryTree<T>::display_inorder(Node<T>* aNode)
         std::cout<<aNode->data<<std::endl;
         display_inorder(aNode->right);
     }
+}
+
+template<typename T>
+void BinaryTree<T>::display_postorder(Node<T>* aNode)
+{
+    if(aNode != nullptr){
+        display_postorder(aNode->left);
+        display_postorder(aNode->right);
+        std::cout<<aNode->data<<std::endl;
+    }
+
 }
 
 template class BinaryTree<int>;
