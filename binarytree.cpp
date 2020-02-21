@@ -23,6 +23,15 @@ void BinaryTree<T>::insert()
 }
 
 template<typename T>
+void BinaryTree<T>::Search()
+{
+    std::cout<<"Enter the data you are looking for : ";
+    T tmpData;
+    std::cin>>tmpData;
+    Search(tmpData,root);
+}
+
+template<typename T>
 void BinaryTree<T>::insert(T data, Node<T>* aNode)
 {
     if(data < aNode->data) {
@@ -45,7 +54,21 @@ void BinaryTree<T>::insert(T data, Node<T>* aNode)
     }
 }
 
+template<typename T>
+Node<T> *BinaryTree<T>::Search(T data, Node<T>* aNode)
+{
+    if(aNode != nullptr) {
+        if(data == aNode->data)
+            return aNode;
+        else if(data > aNode->data)
+            return Search(data,aNode->right);
+        else
+            return Search(data,aNode->left);
+    }
+    else return nullptr;
+}
+
 template class BinaryTree<int>;
-template class Node<float>;
+template class BinaryTree<float>;
 template class BinaryTree<std::string>;
 

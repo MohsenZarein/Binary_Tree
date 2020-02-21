@@ -9,9 +9,11 @@ class BinaryTree
 public:
     BinaryTree();
     void insert();
+    void Search();
 private:
     Node<T>* root;
     void insert(T,Node<T>*);
+    Node<T>* Search(T,Node<T>*);
 
 };
 
