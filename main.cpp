@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "binarytree.h"
 
 void PrintList()
@@ -7,7 +8,7 @@ void PrintList()
     std::cout<<"2>>>Search data"<<std::endl;
     std::cout<<"3>>>display preorder"<<std::endl;
     std::cout<<"4>>>display inorder"<<std::endl;
-    std::cout<<"5>>>display postorder"<<std::endl<<std::endl<<std::endl;
+    std::cout<<"5>>>display postorder"<<std::endl<<std::endl;
 }
 
 int main()
@@ -30,6 +31,10 @@ int main()
             break;
          case 3:
             BT->display_preorder();
+            break;
+         case 4:
+            BT->display_inorder();
+            break;
         default:
             std::cerr<<"invalid input"<<std::endl;
             break;
