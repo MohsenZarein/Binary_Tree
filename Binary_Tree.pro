@@ -4,4 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    node.cpp \
+    binarytree.cpp
+
+HEADERS += \
+    node.h \
+    binarytree.h
