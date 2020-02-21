@@ -8,6 +8,12 @@ BinaryTree<T>::BinaryTree()
 }
 
 template<typename T>
+BinaryTree<T>::~BinaryTree()
+{
+    RecursiveDestroy(root);
+}
+
+template<typename T>
 void BinaryTree<T>::insert()
 {
     std::cout<<"Enter your data in order to 'insert' : ";
@@ -50,6 +56,25 @@ void BinaryTree<T>::display_postorder()
 }
 
 template<typename T>
+void BinaryTree<T>::Delete()
+{
+    std::cout<<"Enter your data in order to 'delete' : ";
+    T tmpData;
+    std::cin>>tmpData;
+    Delete(tmpData,root);
+}
+
+template<typename T>
+void BinaryTree<T>::RecursiveDestroy(Node<T>* aNode)
+{
+    if(aNode != nullptr) {
+        RecursiveDestroy(aNode->left);
+        RecursiveDestroy(aNode->right);
+        delete aNode;
+    }
+}
+
+template<typename T>
 void BinaryTree<T>::insert(T data, Node<T>* aNode)
 {
     if(data < aNode->data) {
@@ -73,17 +98,22 @@ void BinaryTree<T>::insert(T data, Node<T>* aNode)
 }
 
 template<typename T>
-Node<T> *BinaryTree<T>::Search(T data, Node<T>* aNode)
+Node<T>* BinaryTree<T>::Search(T data, Node<T>* aNode)
 {
     if(aNode != nullptr) {
-        if(data == aNode->data)
+        if(data == aNode->data){
+            std::cout<<"Found"<<std::endl;
             return aNode;
+        }
         else if(data > aNode->data)
             return Search(data,aNode->right);
         else
             return Search(data,aNode->left);
     }
-    else return nullptr;
+    else {
+        std::cout<<"Not found"<<std::endl;
+        return nullptr;
+    }
 }
 
 template<typename T>
@@ -115,6 +145,49 @@ void BinaryTree<T>::display_postorder(Node<T>* aNode)
         std::cout<<aNode->data<<std::endl;
     }
 
+}
+
+template<typename T>
+Node<T>* BinaryTree<T>::FindMinValue(Node<T>* aNode)
+{
+    while(aNode->left != nullptr)
+        aNode = aNode->left;
+    return aNode;
+}
+
+template<typename T>
+Node<T> *BinaryTree<T>::Delete(T data, Node<T>* aNode)
+{
+    if(aNode == nullptr){
+        std::cout<<"No such data!"<<std::endl;
+        return aNode;
+    }
+    else if(data < aNode->data)
+        aNode->left = Delete(data,aNode->left);
+    else if(data > aNode->data)
+        aNode->right = Delete(data,aNode->right);
+    else{
+        if(aNode->left == nullptr && aNode->right == nullptr) {
+            delete aNode;
+            aNode = nullptr;
+        }
+        else if(aNode->left == nullptr) {
+            Node<T>* tmpNode = aNode;
+            aNode = aNode->right;
+            delete tmpNode;
+        }
+        else if(aNode->right == nullptr) {
+            Node<T>* tmpNode = aNode;
+            aNode = aNode->left;
+            delete tmpNode;
+        }
+        else {
+            Node<T>* tmpNode = FindMinValue(aNode->right);
+            aNode->data = tmpNode->data;
+            aNode->right = Delete(tmpNode->data,aNode->right);
+        }
+    }
+    return aNode;
 }
 
 template class BinaryTree<int>;

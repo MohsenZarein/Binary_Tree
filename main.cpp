@@ -8,7 +8,9 @@ void PrintList()
     std::cout<<"2>>>Search data"<<std::endl;
     std::cout<<"3>>>display preorder"<<std::endl;
     std::cout<<"4>>>display inorder"<<std::endl;
-    std::cout<<"5>>>display postorder"<<std::endl<<std::endl;
+    std::cout<<"5>>>display postorder"<<std::endl;
+    std::cout<<"6>>>Delete data"<<std::endl;
+    std::cout<<"7>>>Exit"<<std::endl<<std::endl;
 }
 
 int main()
@@ -38,6 +40,11 @@ int main()
          case 5:
             BT->display_postorder();
             break;
+         case 6:
+            BT->Delete();
+            break;
+         case 7:
+            return 0;
         default:
             std::cerr<<"invalid input"<<std::endl;
             break;
