@@ -75,6 +75,12 @@ void BinaryTree<T>::RecursiveDestroy(Node<T>* aNode)
 }
 
 template<typename T>
+unsigned int BinaryTree<T>::count()
+{
+    return count(root);
+}
+
+template<typename T>
 void BinaryTree<T>::insert(T data, Node<T>* aNode)
 {
     if(data < aNode->data) {
@@ -188,6 +194,14 @@ Node<T> *BinaryTree<T>::Delete(T data, Node<T>* aNode)
         }
     }
     return aNode;
+}
+
+template<typename T>
+unsigned int BinaryTree<T>::count(Node<T>* aNode)
+{
+    if(aNode != nullptr)
+        return 1+count(aNode->left)+count(aNode->right);
+    return 0;
 }
 
 template class BinaryTree<int>;

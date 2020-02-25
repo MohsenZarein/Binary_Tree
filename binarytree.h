@@ -16,6 +16,7 @@ public:
     void display_postorder();
     void Delete();
     void RecursiveDestroy(Node<T>*);
+    unsigned int count();
 private:
     Node<T>* root;
     void insert(T,Node<T>*);
@@ -25,7 +26,7 @@ private:
     void display_postorder(Node<T>*);
     Node<T>* FindMinValue(Node<T>*);
     Node<T>* Delete(T,Node<T>*);
-
+    unsigned int count(Node<T>*);
 
 };
 

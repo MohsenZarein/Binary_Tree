@@ -9,7 +9,8 @@ void PrintList()
     std::cout<<"4>>>display inorder"<<std::endl;
     std::cout<<"5>>>display postorder"<<std::endl;
     std::cout<<"6>>>Delete data"<<std::endl;
-    std::cout<<"7>>>Exit"<<std::endl<<std::endl;
+    std::cout<<"7>>>Number of Nodes"<<std::endl;
+    std::cout<<"8>>>Exit"<<std::endl<<std::endl;
 }
 
 int main()
@@ -43,6 +44,9 @@ int main()
             BT->Delete();
             break;
          case 7:
+            std::cout<< BT->count()<<std::endl;
+            break;
+         case 8:
             delete BT;
             return 0;
         default:
